@@ -17,7 +17,7 @@ int main(){
         ll prev = 0;
         for(int i = 0; i < s.length(); i++){
             ll digit = s[i] - '0';
-            current = prev * 10 + (i + 1) * digit;
+            current = prev * 10 + (i + 1) * digit; // vì tưởng tượng như công thức quy hoạch động nên đừng để ý ban đầu để ý luôn vòng lặp thứ 2
             res = (res + current);
             prev = current;
         }
