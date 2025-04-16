@@ -14,8 +14,8 @@ int is_adjacent(const string& a, const string& b){
 }
 
 
-int BFS(string s, string t, vector<string> words){
-    if(s == t) return 0;
+void BFS(string s, string t, vector<string> &words){
+    //if(s == t) return 0;
     queue<pair<string, int>> q;
     q.push({s, 1});
     unordered_set<string> se;
@@ -23,7 +23,8 @@ int BFS(string s, string t, vector<string> words){
     while(!q.empty()){
         pair<string, int> current = q.front(); q.pop();
         if(current.first == t){
-            return current.second;
+            cout << current.second << endl;
+            return;
         }
         for(int i = 0; i < words.size(); i++){
             if(!se.count(words[i]) && is_adjacent(current.first, words[i])){
@@ -32,7 +33,7 @@ int BFS(string s, string t, vector<string> words){
             }
         }
     }
-    return 0;
+    //return 0;
 }
 
 int main(){
@@ -42,10 +43,15 @@ int main(){
     while(testcase--){
         int n; string s, t;
         cin >> n >> s >> t;
-        vector<string> words(n);
-        for(int i = 0; i < n; i++){
-            cin >> words[i];
+        vector<string> words;
+        while(n--){
+            string tmp; cin >> tmp;
+            words.push_back(tmp);
         }
-        cout << BFS(s, t, words);
+        if(s == t){
+            cout << 1 << endl;
+            continue;
+        }
+        BFS(s, t, words);
     }
 }
