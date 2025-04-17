@@ -12,8 +12,6 @@ int dx[8] = {-1, -1, -1, 0, 1, 1, 1, 0};
 int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
 
 void flood_fill(int i, int j, string current){
-    if (current.size() > max_len) return; // Ngăn DFS quá dài
-
     if(dict.count(current)) found.push_back(current);
     visited[i][j] = true;
 
