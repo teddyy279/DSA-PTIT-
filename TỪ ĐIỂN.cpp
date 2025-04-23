@@ -35,12 +35,12 @@ int main(){
         cin >> k >> m >> n;
         dict.clear();
         found.clear();
-        max_len = 0;
+        //max_len = 0;
 
         for(int i = 0; i < k; i++){
             string word; cin >> word;
             dict.insert(word);
-            max_len = max(max_len, (int)word.size());
+            //max_len = max(max_len, (int)word.size());
         }
 
         for(int i = 0; i < m; i++){
