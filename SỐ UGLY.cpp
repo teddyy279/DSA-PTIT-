@@ -2,24 +2,27 @@
 
 using namespace std;
 
-bool isUgly(int n){
-    if(n <= 0) return false;
-    while(n % 2 == 0) n /= 2;
-    while(n % 3 == 0) n /= 3;
-    while(n % 5 == 0) n /= 5;
-    return n == 1;
-}
-
-int FindNthUgly(int n){
-    int cnt = 0;
-    int num = 1;
-    while(true){
-        if(isUgly(num)){
-            cnt++;
-            if(cnt == n) return num;
+void getUglyNumber(int n){
+    vector<int> ugly(n);
+    ugly[0] = 1;
+    int i2 = 0, i3 = 0, i5 = 0;
+    int next2 = 2, next3 = 3, next5 = 5;
+    for(int i = 1; i < n; i++){
+        ugly[i] = min({next2, next3, next5});
+        if(ugly[i] == next2){
+            i2++;
+            next2 = ugly[i2] * 2; 
         }
-        num++;
+        if(ugly[i] == next3){
+            i3++;
+            next3 = ugly[i3] * 3;
+        }
+        if(ugly[i] == next5){
+            i5++;
+            next5 = ugly[i5] * 5;
+        }
     }
+    cout << ugly[n - 1] << "\n";
 }
 
 int main(){
@@ -28,6 +31,6 @@ int main(){
     int t; cin >> t;
     while(t--){
         int n; cin >> n;
-        cout << FindNthUgly(n) << endl;
+        getUglyNumber(n);
     }
 }
